@@ -1,0 +1,23 @@
+mat-toolbar a {
+  color: white;
+  text-decoration: none;
+}
+mat-toolbar a:hover {
+  color: #f44336;
+}
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100%;
+}
+mat-sidenav {
+  width: 250px;
+}
+.logo mat-icon {
+  font-size: 25px;
+  margin-right: 15px;
+}
+.logo h1 {
+  font-size: 30px;
+  display: inline;
+}

@@ -1,0 +1,21 @@
+<div>
+    <h2  fxLayoutAlign="center"> <mat-icon matBadge="{{count}}" matBadgeColor="warn" matBadgePosition="after" matBadgeSize="medium">shopping_cart</mat-icon>Cart</h2>
+    <div *ngFor="let item of items" fxLayoutAlign="center">
+        <mat-card fxLayoutAlign="space-between">
+            <p>Name: <span>{{ item.name }}</span></p>
+            <p>Price: <span>{{ item.price }}</span></p>
+        </mat-card>
+    </div>
+    <div fxLayoutAlign="center">
+        <mat-card>
+            <div fxLayoutAlign="space-around">
+                <button mat-raised-button color="warn" (click)="calculateTotalAmount()">Calculate your total</button>
+                <p class="total">Total amount: {{sum}}</p>
+             </div>
+           <div fxLayoutAlign="space-around" class="buttons">
+            <button mat-raised-button color="primary" (click)="clearCart()">Clear cart</button>
+            <button id="button" mat-raised-button color="warn" [disabled]= "sum == 0 " [routerLink]="'/order'" (click)="clearCart()">Place your order</button>
+        </div>
+        </mat-card>
+    </div>
+</div>

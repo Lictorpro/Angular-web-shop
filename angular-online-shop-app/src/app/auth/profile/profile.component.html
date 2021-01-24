@@ -1,0 +1,134 @@
+<div fxLayoutAlign="space-between">
+
+    <button mat-icon-button>
+        <mat-icon matListIcon *ngIf="this.profileForInput.id == this.userService.currentUser.id" (click)="this.isEditing = !this.isEditing">edit</mat-icon>
+    </button>
+
+    <button mat-icon-button [mat-dialog-close]="true">
+        <mat-icon matListIcon>close</mat-icon>
+    </button>
+    
+</div>
+<br>
+
+<mat-dialog-content>
+    <form fxLayout="column" fxLayoutGap="3vh" #editForm="ngForm" (ngSubmit)="finishEditing(editForm)">
+
+        <!--First Name-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>face</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>First Name</mat-card-subtitle>
+                    <span>{{ this.profileForInput.firstName }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="text" matInput placeholder="First Name" ngModel name="firstName" required [(ngModel)]="this.profileForInput.firstName">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!--Last Name-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>face</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Last Name</mat-card-subtitle>
+                    <span>{{ this.profileForInput.lastName }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="text" matInput placeholder="Last Name" ngModel name="lastName" required [(ngModel)]="this.profileForInput.lastName">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!--Email-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>email</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Email</mat-card-subtitle>
+                    <span>{{ this.profileForInput.email }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="email" matInput placeholder="Email" ngModel name="email" email required [(ngModel)]="this.profileForInput.email" #emailInput="ngModel">
+                    <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty.</mat-error>
+                    <mat-error *ngIf="!emailInput.hasError('required')">Please use the correct email format.</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!--Password -->
+        <mat-card *ngIf="this.isEditing">
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>lock</mat-icon>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" ngModel name="password"  [(ngModel)]="this.profileForInput.password" password required #passwordInput="ngModel">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+
+        <!--Date of birth-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>cake</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Date of birth</mat-card-subtitle>
+                    <span>{{ this.profileForInput.birthDate }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input matInput placeholder="Date of birth" [matDatepicker]="picker" ngModel name="birthDate" required [(ngModel)]="this.profileForInput.birthDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+         <!--Mobile number-->
+         <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>smartphone</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Mobile number</mat-card-subtitle>
+                    <span>{{ this.profileForInput.mobileNumber }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="text" matInput placeholder="Mobile number" ngModel name="mobileNumber" required [(ngModel)]="this.profileForInput.mobileNumber">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!--Address-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>location_on</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Address</mat-card-subtitle>
+                    <span>{{ this.profileForInput.address }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="text" matInput placeholder="Address" ngModel name="address" required [(ngModel)]="this.profileForInput.address">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <!--Favourite types of products-->
+        <mat-card>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+                <mat-icon>color_lens</mat-icon>
+                <div fxLayout="column" *ngIf="!this.isEditing">
+                    <mat-card-subtitle>Favourite types of products</mat-card-subtitle>
+                    <span>{{ this.profileForInput.favouriteProducts }}</span>
+                </div>
+                <mat-form-field *ngIf="this.isEditing">
+                    <input type="text" matInput placeholder="Favourite types of products" ngModel name="favouriteProducts" required [(ngModel)]="this.profileForInput.favouriteProducts">
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <button *ngIf="this.isEditing" mat-raised-button type="submit" color="primary">Save user</button>
+
+    </form>
+    <br>
+</mat-dialog-content>

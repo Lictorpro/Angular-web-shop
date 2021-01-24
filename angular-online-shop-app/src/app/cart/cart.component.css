@@ -1,0 +1,20 @@
+mat-card {
+  width: 400px;
+  margin-bottom: 5px;
+}
+p span {
+  font-weight: bold;
+}
+h2 {
+  margin-top: 20px;
+}
+h2 mat-icon {
+  font-size: 35px;
+  margin-right: 30px;
+}
+.buttons {
+  margin-top: 20px;
+}
+.total {
+  margin-top: 20px;
+}

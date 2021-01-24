@@ -1,0 +1,50 @@
+<section>
+    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="10px">
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="First Name" ngModel name="firstName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Last Name" ngModel name="lastName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="email" matInput placeholder="Email" ngModel name="email" email required #emailInput="ngModel"> 
+            <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty.</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Please use the correct email format.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter minimum 6 characters.">
+            <input type="password" matInput placeholder="Password" ngModel password name="password" required minlength="6" #passInput="ngModel">
+            <mat-hint align="end">{{ passInput.value?.length }} / 6</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Date of birth" [matDatepicker]="picker" ngModel name="birthDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Mobile number" ngModel name="mobileNumber" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Address" ngModel name="address" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Favourite types of products" ngModel name="favouriteProducts" required>
+        </mat-form-field>
+
+        <mat-checkbox color="primary" ngModel name="acceptance" required>I accept the terms of conditions of use.</mat-checkbox>
+
+        <button type="submit" mat-raised-button color="warn" [disabled]="f.invalid">Sign up</button>
+
+        <mat-label *ngIf="errorExists">{{errorText}}</mat-label>
+        <a routerLink="/login">Go back to login</a>
+    </form>
+</section>
+
+
