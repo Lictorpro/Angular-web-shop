@@ -1,2 +1,2 @@
-# Angular-web-shop
-Angular web shop project for practice
+# User interface for web shop
+User interface made in angular for university project.
